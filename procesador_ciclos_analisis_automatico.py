@@ -65,8 +65,8 @@ templog = 1
 N_espiras_bob_captora=1
 nombre='*NF@cit 260630'
 Analisis_de_Fourier = 1 # sobre las señales, imprime espectro de señal muestra
-N_armonicos_impares = 15
-concentracion =(15.5)*1e3 #[concentracion]= g/m^3 (1 g/l == 1e3 g/m^3) (Default = 10000 g/m^3)
+N_armonicos_impares = 18
+concentracion =(13.4)*1e3 #[concentracion]= g/m^3 (1 g/l == 1e3 g/m^3) (Default = 10000 g/m^3)
 capsula_glucosa=0   # capsula para solventes organicos
 detector_ciclos_descartables=True #en funcion a Mag max para evitar guardar/promediar con ciclos in/out
 Ciclo_promedio=1
@@ -275,6 +275,7 @@ if templog:
         print(f'''Inicio del templog: {timestamp[0]}\n\nDatetime primer archivo: {dates_m[0]}\n\nDatetime ultimo archivo: {dates_m[-1]}\n\nFin del templog: {timestamp[-1]}\n''')
 
 else:
+    
     concentracion_gL = concentracion/1000
     print('No se requiere archivo con templog')
     temp_m=np.array([float(20) for f in fnames_m])
@@ -495,7 +496,7 @@ for k in range(len(fnames_m)):
     '''
     # MOMENTO FOURIER
     if Analisis_de_Fourier == 1: 
-        _, _, muestra_rec_impar,delta_phi_0,f_0,amp_0,fase_0, espectro_f_amp_fase_m,espectro_ref = fourier_señales_5(t_m_3,Resta_m_3,v_r_m_3,
+        _,_,muestra_rec_impar,delta_phi_0,f_0,amp_0,fase_0, espectro_f_amp_fase_m,espectro_ref = fourier_señales_5(t_m_3,Resta_m_3,v_r_m_3,
                                                                                                         delta_t=delta_t[k],polaridad=polaridad,
                                                                                                         filtro=0.05,frec_limite=2*N_armonicos_impares*frec_final_m,
                                                                                                         name=fnames_m[k])
