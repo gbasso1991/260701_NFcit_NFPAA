@@ -567,12 +567,39 @@ fig5.savefig('07_Hc_comparativa.png',dpi=300)
 
 # %%
 #%% Printeo resultados
+print(f'Muestra = {nombre_cit}')
+print(f'Concentracion = {conc_cit:.1f} g/L')
+print(f'ESAR = {SAR_cit} W/g')
+print(f'tau = {tau_cit} ns')
+print(f'Hc = {Hc_cit} kA/m') 
+# %%
+def promedio_por_tres(lista):
+    return [sum(lista[i:i+3])/3 for i in range(0, len(lista), 3)]
+
+SAR_prom = promedio_por_tres(SAR_cit)
+tau_prom = promedio_por_tres(tau_cit)
+Hc_prom  = promedio_por_tres(Hc_cit)
+
+campos = ['H1', 'H2', 'H3']
+
+print(f'Muestra = {nombre_cit}')
+print(f'Concentracion = {conc_cit:.1f} g/L\n')
+
+for campo, sar, tau, hc in zip(campos, SAR_prom, tau_prom, Hc_prom):
+    print(f'{campo}:')
+    print(f'  ESAR = {sar:.1uS} W/g')
+    print(f'  tau  = {tau:.1uS} ns')
+    print(f'  Hc   = {hc:.1uS} kA/m')
+    print()
+#%% Idem para PAA
 print(f'Muestra = {nombre_PAA}')
 print(f'Concentracion = {conc_PAA:.1f} g/L')
-print(f'ESAR = {SAR_PAA} W/g')
-print(f'tau = {tau_PAA} ns')
-print(f'Hc = {Hc_PAA} kA/m') 
-# %%
+SAR_prom = promedio_por_tres(SAR_PAA)
+tau_prom = promedio_por_tres(tau_PAA)
+Hc_prom  = promedio_por_tres(Hc_PAA)
 
-
-
+for campo, sar, tau, hc in zip(campos, SAR_prom, tau_prom, Hc_prom):    
+    print(f'{campo}:')
+    print(f'  ESAR = {sar:.2uS} W/g')
+    print(f'  tau  = {tau:.2uS} ns')
+    print(f'  Hc   = {hc:.2uS} kA/m')
