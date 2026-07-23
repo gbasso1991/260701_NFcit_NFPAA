@@ -565,5 +565,14 @@ fig3.savefig('05_ESAR_comparativa.png',dpi=300)
 fig4.savefig('06_tau_comparativa.png',dpi=300)
 fig5.savefig('07_Hc_comparativa.png',dpi=300)
 
-
 # %%
+#%% Printeo resultados
+print(f'Muestra = {nombre_PAA}')
+print(f'Concentracion = {conc_PAA:.1f} g/L')
+print(f'ESAR = {SAR_PAA} W/g')
+print(f'tau = {tau_PAA} ns')
+print(f'Hc = {Hc_PAA} kA/m') 
+# %%
+
+
+
